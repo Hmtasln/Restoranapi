@@ -16,19 +16,28 @@ app.get('/', (req, res) => {
 });
 // Routers klasöründeki tüm rotaları yükle
 const authRouter = require('./src/routers/auth.routers');
+const trendyolRouter = require('./src/routers/trendyol/routers');
 
 // Hata işleyiciyi yüklüyoruz
 const errorHandler = require('./src/middlewares/errorHandler');
+
+// Api Injection güveliği
+const mongoSanitize = require('express-mongo-sanitize');
 
 // Middlewareler tanımlanıyor
 app.use(express.json());
 app.use(express.json({limit:'50mb'}));
 app.use(express.urlencoded({limit:'50mb',extended:true, parametreLimit:50000}));
 
-
+app.use(
+  mongoSanitize({
+    replaceWith: '_',
+  }),
+);
 
 // /api rotasına authRouter'ı bağla
 app.use("/api", authRouter);
+app.use("/trendyol", trendyolRouter);
 
 
 // Hata yakalama middleware'ini kullanılıyor

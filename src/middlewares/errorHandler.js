@@ -10,7 +10,14 @@ const errorHandler = (err, req, res, next) => {
 
 
     }
-    
+
+    // Injection yapıldığında aluşan hataları ve bilgileirn logu tutuluyor    
+    if(err.name==="CastError"){
+
+        console.log("test");
+
+    }
+
     return res.status(500).json({
         success:false,
         message:" Bir hata oluştu. Lütfen daha sonra tekrar deneyiniz."

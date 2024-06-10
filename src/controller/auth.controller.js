@@ -1,7 +1,7 @@
  
- const { response } = require("express");
+const { response } = require("express");
 const users=require("../models/user.model");
-    const bcrypt=require('bcrypt');
+const bcrypt=require('bcrypt');
 const AppiError = require("../utils/errors");
 const Response = require("../utils/response");
 const {createToken}=require('../middlewares/auth');
