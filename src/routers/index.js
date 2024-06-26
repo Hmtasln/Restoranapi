@@ -1,7 +1,13 @@
-const router=require('express').Router();
+const express = require('express');
+const router = express.Router();
 
-const authRouter=require('./auth.routers');
+const authRouter = require('./auth.routers');
+const migrosRouter = require('./migros/migros.routers');
 
+// authRouter'ı /auth yolunda kullan
 router.use(authRouter);
 
-module.exports=router;
+// migrosRouter'ı /migros yolunda kullan
+router.use(migrosRouter);
+
+module.exports = router;

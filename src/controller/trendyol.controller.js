@@ -15,10 +15,12 @@ const createdOrder  =async (req, res) =>{
                  .created(res); 
 
                  try {
-                                      
-                
-                    // Trendyol API'sine POST isteği yap
+                                   
+                     // Trendyol API'sine POST isteği yap
                     const response = axios.post('https://stageapi.trendyol.com/integration/oms/meal', order, {
+
+                        
+
                       headers: {
                         
                         'Content-Type': 'application/json',

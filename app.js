@@ -17,6 +17,7 @@ app.get('/', (req, res) => {
 // Routers klasöründeki tüm rotaları yükle
 const authRouter = require('./src/routers/auth.routers');
 const trendyolRouter = require('./src/routers/trendyol/routers');
+const migrosRouter = require('./src/routers/migros/routers');
 
 // Hata işleyiciyi yüklüyoruz
 const errorHandler = require('./src/middlewares/errorHandler');
@@ -38,6 +39,7 @@ app.use(
 // /api rotasına authRouter'ı bağla
 app.use("/api", authRouter);
 app.use("/trendyol", trendyolRouter);
+app.use("/migros", migrosRouter);
 
 
 // Hata yakalama middleware'ini kullanılıyor
