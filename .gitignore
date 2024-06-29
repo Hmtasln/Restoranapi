@@ -1,0 +1,56 @@
+# Node.js modülleri
+node_modules/
+
+# Log dosyaları
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Çalışma zamanı dosyaları
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Çalışma zamanı dosyaları
+lib-cov/
+coverage/
+
+# Hata raporları
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Test coverage
+coverage/
+
+# Gecici dosyalar
+*.tmp
+*.temp
+
+# Sisteme özel dosyalar
+.DS_Store
+Thumbs.db
+
+# Çeşitli IDE ve editör dosyaları
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# Çeşitli ortam dosyaları
+.env
+.env.test
+.env.production
+
+# Build dosyaları
+dist/
+build/
+
+# Temporary files
+tmp/
+temp/

@@ -1,7 +1,7 @@
 const express = require('express');
 const crypto = require('crypto');
 const axios = require('axios');
-const GetDefinedActiveRestaurantApiKeys = require('../models/migros.model');
+const migrosSchema = require('../models/migros.model');
 const bcrypt = require('bcrypt');
 const AppiError = require('../utils/errors');
 const Response = require('../utils/response');
@@ -10,18 +10,18 @@ const { createToken } = require('../middlewares/auth');
 const activeRestaurantApiKey = async (req, res) => {
   
   
-  const RestaurantApiKeys = new GetDefinedActiveRestaurantApiKeys(req.body);
+  const RestaurantApiKeys = new migrosSchema(req.body);
   try {
     const savedRestaurantApiKeys = await RestaurantApiKeys.save();
 
-    // Trendyol API'sine POST isteği yap
-    const response = await axios.post('https://test.gourmet.migrosonline.com/Store/GetDefinedActiveRestaurantApiKeys', savedRestaurantApiKeys, {
+    // Migros API'sine POST isteği yap
+    const response = await axios.post(`${process.env.MIGROS_API}/Store/GetDefinedActiveRestaurantApiKeys`, savedRestaurantApiKeys, {
       headers: {
         'Content-Type': 'application/json',
       }
     });
 
-    // Trendyol'dan gelen yanıtı döndür
+    // Gelen yanıtı döndür
     res.status(200).json(response.data);
   } catch (error) {
     if (error.response) {
@@ -36,19 +36,19 @@ const activeRestaurantApiKey = async (req, res) => {
 
 const pendingOrdersWithStores = async (req, res) => {
   
-  
-  const RestaurantApiKeys = new GetDefinedActiveRestaurantApiKeys(req.body);
+  console.log("sadasd",req);
+  const RestaurantApiKeys = new migrosSchema(req.body);
   try {
     const savedRestaurantApiKeys = await RestaurantApiKeys.save();
 
-    // Trendyol API'sine POST isteği yap
-    const response = await axios.post('https://test.gourmet.migrosonline.com/Store/GetDefinedActiveRestaurantApiKeys', savedRestaurantApiKeys, {
+    // Migros sipariş listesi
+    const response = await axios.post(`${process.env.MIGROS_API}/Order/PendingOrdersWithStores`, savedRestaurantApiKeys, {
       headers: {
         'Content-Type': 'application/json',
       }
     });
 
-    // Trendyol'dan gelen yanıtı döndür
+    // Gelen yanıtı döndür
     res.status(200).json(response.data);
   } catch (error) {
     if (error.response) {

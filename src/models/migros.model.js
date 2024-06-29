@@ -10,7 +10,7 @@ const GetDefinedActiveRestaurantApiKeys = new mongoose.Schema({
     
   });
 
-  const StoreIds=new mongoose.Schema({
+ /*  const StoreIds=new mongoose.Schema({
     storeIds:{
         type: Number,
         required: true
@@ -18,16 +18,17 @@ const GetDefinedActiveRestaurantApiKeys = new mongoose.Schema({
   });
   const PendingOrdersWithStores =new mongoose.Schema({
   
-    orders:{    
-         storeIds: [
-            StoreIds
-        ],
-        offset: 0,
-        limit: 0
-    },
-          });
-
-  const ApiKeys = mongoose.model('secretKey', GetDefinedActiveRestaurantApiKeys);
+        orders:{    
+            storeIds: [StoreIds],
+            offset: Number,
+            limit: Number
+        },
+    });
+    const orderSchema = new mongoose.Schema({
+        GetDefinedActiveRestaurantApiKeys: GetDefinedActiveRestaurantApiKeys,
+        PendingOrdersWithStores:PendingOrdersWithStores
+      }); */
+  const ApiKeys = mongoose.model('orderSchema', GetDefinedActiveRestaurantApiKeys);
 
 // Modeli dışa aktar
 module.exports = ApiKeys;
