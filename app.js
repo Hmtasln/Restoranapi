@@ -48,6 +48,6 @@ app.use(errorHandler);
 // Belirtilen portta sunucuyu başlat ve dinle
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
-}); 
+});  
 
 
