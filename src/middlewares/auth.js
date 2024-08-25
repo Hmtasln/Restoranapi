@@ -4,12 +4,14 @@ const users=require("../models/user.model");
 const createToken= async (user,res)=>{
 
 
-    console.log("createToken",user);
+    /* console.log("createToken",user); */
 
-
+    var tarih = new Date();
+  
     const payload={
             sub:user.id,
-            name:user.name
+            name:user.name,
+            tarih:tarih.getTime()
     }
 
     const token= await jwt.sign(payload,process.env.JWT_SECRET_KEY,{
@@ -19,15 +21,7 @@ const createToken= async (user,res)=>{
 
     });
 
-    return res.status(201).json({
-
-
-        success:true,
-        token,
-        message:"Token oluşturuldu"
-
-
-    });
+    return  token ;
 
 }
 

@@ -1,7 +1,9 @@
 require('express-async-errors');
 const express = require('express');
+const cors = require('cors');
 const app = express();
 
+app.use(cors());
 // .env dosyasından ortam değişkenlerini yükle
 require('dotenv').config();
 
@@ -16,8 +18,10 @@ app.get('/', (req, res) => {
 });
 // Routers klasöründeki tüm rotaları yükle
 const authRouter = require('./src/routers/auth.routers');
+const restorantRouter = require('./src/routers/restorantekle.routers');
 const trendyolRouter = require('./src/routers/trendyol/routers');
 const migrosRouter = require('./src/routers/migros/routers');
+const getirRouter = require('./src/routers/getir/routers');
 
 // Hata işleyiciyi yüklüyoruz
 const errorHandler = require('./src/middlewares/errorHandler');
@@ -38,8 +42,10 @@ app.use(
 
 // /api rotasına authRouter'ı bağla
 app.use("/api", authRouter);
+app.use("/api", restorantRouter);
 app.use("/trendyol", trendyolRouter);
 app.use("/migros", migrosRouter);
+app.use("/getir", getirRouter);
 
 
 // Hata yakalama middleware'ini kullanılıyor

@@ -35,6 +35,11 @@ const userSchema = new mongoose.Schema({
         required: true,
         trim: true
     },
+    token:{
+        type: String,
+        trim:true, 
+        unique: true
+    }
     // Şema seçenekleri: 'users' koleksiyonunu kullan ve zaman damgalarını etkinleştir
 }, { collection: 'users', timestamps: true });
 

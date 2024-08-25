@@ -1,14 +1,14 @@
 const router = require('express').Router();
 
-const { activeRestaurantApiKey,pendingOrdersWithStores } = require('../../controller/migros.controller');
+const { GetDefinedActiveRestaurantApiKeys,activeOrdersWithStores,pendingOrdersWithStores} = require('../../controller/migros.controller');
 
-//const authValidation = require('../../middlewares/validations/auth.validation');
+const authValidation = require('../../middlewares/validations/auth.validation');
 
 const { tokenControl } = require('../../middlewares/auth');
 
-//console.log("migros router");
 
-router.post('/activeRestaurantApiKey', activeRestaurantApiKey);
-router.post('/pendingOrdersWithStores', pendingOrdersWithStores);
+router.post('/GetDefinedActiveRestaurantApiKeys', GetDefinedActiveRestaurantApiKeys);
+router.post('/activeOrdersWithStores', activeOrdersWithStores);
+router.post('/pendingOrdersWithStores',pendingOrdersWithStores);
 
 module.exports = router;
