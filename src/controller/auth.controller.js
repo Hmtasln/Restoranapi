@@ -32,7 +32,7 @@ const login = async (req, res) => {
         console.error(err);
         return new Response(null, err.message).error(res);
     }
-};
+}
 
 const register = async (req, res) => {
     try {
@@ -66,10 +66,13 @@ const register = async (req, res) => {
         console.error(err);
         return new Response(null, err.message).error(res);
     }
-};
+}
 
 const me = async (req, res) => {
     return new Response(req.user, "Kullanıcı bilgileri başarıyla getirildi").success(res);
-};
+}
+
+
 
 module.exports = { login, register, me };
+
