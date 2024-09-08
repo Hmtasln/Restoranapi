@@ -22,6 +22,7 @@ const restorantRouter = require('./src/routers/restorantekle.routers');
 const trendyolRouter = require('./src/routers/trendyol/routers');
 const migrosRouter = require('./src/routers/migros/routers');
 const getirRouter = require('./src/routers/getir/routers');
+const siparisler = require('./src/routers/siparisler.routers');
 
 // Hata işleyiciyi yüklüyoruz
 const errorHandler = require('./src/middlewares/errorHandler');
@@ -42,6 +43,7 @@ app.use(
 
 // /api rotasına authRouter'ı bağla
 app.use("/api", authRouter);
+app.use("/api", siparisler);
 app.use("/api", restorantRouter);
 app.use("/trendyol", trendyolRouter);
 app.use("/migros", migrosRouter);

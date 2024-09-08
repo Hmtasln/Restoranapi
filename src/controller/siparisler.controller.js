@@ -7,6 +7,7 @@ const Response = require("../utils/response");
 const { createToken, tokenControl } = require('../middlewares/auth');
 
 const Siparis = async (req, res) => {
+    
     try {
         const sipariler = { ...req.body };
             console.log(req.body.id);
@@ -15,10 +16,11 @@ const Siparis = async (req, res) => {
            });
            console.log(siparis);
 
-       /*  return new Response(getirsipariler, "Getir siparisler eklendi.").success(res); */
+        return new Response(siparis, " siparisler listelendi.").success(res);
 
     } catch (err) {
         console.error(err);
         return new Response(null, err.message).error(res);
     } 
 };
+module.exports = { Siparis };
