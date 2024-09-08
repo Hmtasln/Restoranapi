@@ -9,17 +9,17 @@ const { createToken, tokenControl } = require('../middlewares/auth');
 const getirSiparis = async (req, res) => {
     try {
         const getirsipariler = { ...req.body };
-
+            console.log(req.body.id);
         await yepposmodel.insertMany([
             {
                 online_orders_gt_id: req.body.id,
                 online_orders_customers_gt_id: req.body.client.id,
-               // online_orders_no: req.body.products.id,
-               // online_orders_token: req.body.restaurant.id,
-                //online_orders_details_uniq_id: req.body.id,
+                online_orders_no: req.body.id,
+                online_orders_token: req.body.id,
+                online_orders_details_uniq_id: req.body.id,
                 online_orders_company_id: req.body.restaurant.id,
-               /// online_orders_days_id: req.body.checkoutDate,
-               // online_orders_users_id: req.body.client.id,
+                online_orders_days_id: req.body.checkoutDate,
+                online_orders_users_id: req.body.client.id,
                 online_orders_payment_type: req.body.paymentMethod,
                 online_orders_delivery_type: req.body.deliveryType,
                 online_orders_customers_adress_id: req.body.client.id,
@@ -33,6 +33,7 @@ const getirSiparis = async (req, res) => {
                 online_orders_location_lat: req.body.client.location.lat,
                 online_orders_location_lon: req.body.client.location.lon,
                 online_orders_integrations_id: req.body.restaurant.id,
+                online_orders_customers_id:req.body.id
             }
         ]);
 

@@ -1,5 +1,5 @@
 // Mongoose modülünü içe aktar
-const { string } = require('joi');
+const { string, number } = require('joi');
 const mongoose = require('mongoose');
 
 // Kullanıcı modeli için bir şema tanımla
@@ -57,11 +57,11 @@ const yep_online_ordersSchema = new mongoose.Schema({
         trim:true, 
         unique: true
     },online_orders_payment_type:{
-        type: String,
+        type: Number,
         trim:true, 
         unique: true
     },online_orders_delivery_type:{
-        type: String,
+        type: Number,
         trim:true, 
         unique: true
     },online_orders_customers_adress_id:{
@@ -70,9 +70,7 @@ const yep_online_ordersSchema = new mongoose.Schema({
         unique: true
     },online_orders_note:{
         type: String,
-        required: false,
-        trim:true, 
-        unique: true
+        
     },online_orders_total:{
         type: String,
         required: false,
